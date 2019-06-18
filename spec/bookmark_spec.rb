@@ -1,4 +1,4 @@
-require './lib/bookmark.rb'
+# require './lib/bookmark.rb'
 
 RSpec.describe Bookmark do
   let(:bookmark) { double Bookmark.new }
