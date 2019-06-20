@@ -20,4 +20,13 @@ RSpec.describe Bookmark do
     expect(bookmark.url).to eq 'http://www.youtube.com'
     expect(bookmark.title).to eq 'You tube'
   end
+
+  describe '#delete' do
+    it 'delete an existing bookmark' do
+      bookmark = Bookmark.create('http://www.youtube.com', 'You tube')
+      Bookmark.delete(id: bookmark.id)
+      
+      expect(Bookmark.all).not_to include(bookmark)
+    end
+  end
 end

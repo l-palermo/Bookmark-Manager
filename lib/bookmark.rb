@@ -23,6 +23,15 @@ class Bookmark
     result.map do |row| Bookmark.new(row['id'], row['title'], row['url']) end
   end
 
+  def self.delete(id:)
+    if ENV['ENVIRONMENT'] == 'test'
+      connect = PG.connect(dbname: 'bookmark_manager_test')
+    else
+      connect = PG.connect(dbname: 'bookmark_manager')
+    end
+    connect.exec("DELETE FROM bookmarks WHERE id='#{id}';")
+  end
+
   attr_reader :id, :title, :url
 
   def initialize(id, title, url)

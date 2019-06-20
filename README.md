@@ -22,13 +22,16 @@ Test database
 As a user
 So I can stay organized 
 I want to see a list of bookmarks
-
 ```
 ```
 As a user
 So I can update my collection of bookmarks
 I want to add a bookmark
-
+```
+```
+As a user
+So I can remove my bookmark from Bookmark Manager
+I want to delete a bookmark
 ```
 * Domain Model 
 
