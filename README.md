@@ -24,6 +24,12 @@ So I can stay organized
 I want to see a list of bookmarks
 
 ```
+```
+As a user
+So I can update my collection of bookmarks
+I want to add a bookmark
+
+```
 * Domain Model 
 
 Client --> get request --> Controller(app.rb)

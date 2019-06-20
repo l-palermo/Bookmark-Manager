@@ -1,23 +1,20 @@
-require './app.rb'
 
 RSpec.feature 'Testing bookmark', :type => :feature do
   
   scenario 'shows home page' do
     visit '/'
-    expect(page).to have_content 'Bookmark Manager'
+    expect(page).to have_content 'Bookmarks'
   end
 
   scenario 'viewing bookmarks' do
-    connection = PG.connect(dbname: 'bookmark_manager_test')
 
-    connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.makersacademy.com');")
-    connection.exec("INSERT INTO bookmarks (url) VALUES('http://www.google.com');")
-    connection.exec("INSERT INTO bookmarks (url) VALUES('http://www.destroyallsoftware.com');")
+    Bookmark.create('http://www.makersacademy.com', 'makers')
+    Bookmark.create('http://www.google.com', 'google')
+    Bookmark.create('http://www.destroyallsoftware.com', 'destroy')
 
     visit '/bookmarks'
-    expect(page).to have_content "http://www.makersacademy.com"
-    expect(page).to have_content "http://www.destroyallsoftware.com"
-    expect(page).to have_content "http://www.google.com"
-    expect(page).to have_text "http://www.makersacademy.com http://www.google.com http://www.destroyallsoftware.com"
+    expect(page).to have_link "makers", href: 'http://www.makersacademy.com'
+    expect(page).to have_link "google", href: 'http://www.google.com'
+    expect(page).to have_link "destroy", href: 'http://www.destroyallsoftware.com'
   end
 end
