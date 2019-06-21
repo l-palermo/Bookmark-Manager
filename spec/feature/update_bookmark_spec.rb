@@ -15,6 +15,6 @@ RSpec.feature 'update bookmark' do
 
     expect(current_path).to eq '/bookmarks'
     expect(page).not_to have_link('gumtree', href: 'http://www.gumtree.co.uk')
-    expect(page).to have_link('new yahoo'), href: 'http://www.yahoo.com'
+    expect(page).to have_link('new yahoo', href: 'http://www.yahoo.com')
   end
 end
